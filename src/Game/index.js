@@ -13,11 +13,14 @@ const serial = new SerialPortReader();
 
 // Phaser setup
 function create() {
-
+  graphics = this.add.graphics({
+    fillStyle: { color: 0xffeeee },
+    lineStyle: { width: 3, color: 0xeeeeee }
+  });
 }
 
 function update(totalTime, deltaTime) {
-
+  graphics.fillCircle(config.width/2,config.height/2,12);
 }
 
 function onSerialMessage(msg) {
