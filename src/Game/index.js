@@ -10,6 +10,7 @@ const config = {
 };
 
 const serial = new SerialPortReader();
+let radius = 0;
 
 // Phaser setup
 function create() {
@@ -20,12 +21,25 @@ function create() {
 }
 
 function update(totalTime, deltaTime) {
-  graphics.fillCircle(config.width/2,config.height/2,12);
+  graphics.restore();
+  graphics.clear();
+  graphics.fillCircle(config.width/2,config.height/2, radius);
+
 }
 
 function onSerialMessage(msg) {
   // Put your serial reading code in here. msg will be a string
-  console.log(msg);
+  //console.log(msg);
+  const vals = msg.split('-');
+  if(vals[0] == 1)
+  {
+    radius = 5;
+  }
+  if(vals[0] == 2)
+  {
+    radius = 40;
+  }
+  
 }
 
 
